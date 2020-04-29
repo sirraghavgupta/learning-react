@@ -1,0 +1,19 @@
+what is the benefit of react running on browser? what if it was not there?
+single page vs multi page 
+class vs class name
+virtual dom 
+map, filter, reduce 
+eslint 
+more extensions
+
+let a = {
+name : "Sanskriti" ,
+x : function () {
+      console.log("Outer",this.name)
+      var self = this
+       function showname () {
+        console.log("Inner",self.name)
+     }
+     showname();
+}
+};
