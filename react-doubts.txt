@@ -1,0 +1,27 @@
+what is the benefit of reactrunning on browser? what if it was not there?
+single page vs multi page 
+class vs class name
+
+state updation in functional component - resetting again the changed state when 
+useState is called. 
+
+virtual dom 
+map, filter, reduce 
+eslint 
+more extensions
+showname bind this.
+common elements in 2 arrays.
+
+
+
+let a = {
+name : "Sanskriti" ,
+x : function () {
+      console.log("Outer",this.name)
+      var self = this
+       function showname () {
+        console.log("Inner",self.name)
+     }
+     showname();
+}
+};

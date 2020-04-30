@@ -1,0 +1,107 @@
+what is react? 
+react is a javascript library - helps to build user interfaces. 
+by js lib - runs on browser, very fast, mobile app like feel, user doesnt have to wait for a response as the code runs on the browser itself, not on the browser. 
+
+we can break the page into a number of components. 
+why? brnigs modularity, easy to manage, easy to work in teams, reduces complexity, gives reusability, maintainable code. 
+so, at the end we are just like building custome html elements. 
+
+----
+
+react is the most popular javascript library for building front end web apps these days.
+
+react is all about building components or custom html elements for us.
+like we have course cards on udemy page, they all have same structure and look same. 
+so react will escape the repitition of code in html and will make easier updation as we will have to change at a single place when we have to change the structure of the card.
+
+---- 
+
+now we write our first code in codepen. 
+play with some cards.
+then import react and react Dom.
+react - contains all the logic for buildiing those components.
+react DOM - contains all the logic for rendering the components on the DOM.
+
+function name should be start with capital letter - thats required to use it properly with react. 
+
+see the comments expln on codepen. 
+
+----
+
+why react?
+- components
+- make UI state handling of the applictaion very easy. in vanilla js, we sue query selectors, due to which we fetch elements everytime and when we change the elements, we might need to change the way we fetch them. also, if we are dynamically adding and removing many elements in our app, its very diff and nightmare with vanilla js. 
+
+actually we have jQuery also which makes very easy to traverse the DOM but still, its not that good. 
+
+with react, we can leave the how - i.e. how to reach the element, we can just focus on the business logi and render the components for what we see. 
+
+- huge community, easy problem solving, lesser mistakes.
+- focus on business logic, rather than preventing the app from exploding. 
+- helps build highly scalable web apps. 
+
+----
+
+we can actually build 2 types of applications.
+single page apps - higly popular and most recommended
+				 - entire page is controolled by react
+				 - all the components are react ones, the root component too. 
+				 - allows us to make only one render call. 
+				 - the servver returns only one single page and rest all is managed by react on the browser. 
+				 - thats why its recommended as we dont have to wait for the response from the server. 
+				 - if we have to, then also we are showing up a rotating circle rather than the page is getting loaded on browser. 
+				 - so, better user exp. 
+
+multipage apps - we get different pages for differnt urls like / and /users. 
+			   - rest all is in contrast with above - opposite or so. 
+
+
+----
+
+=========================== Section 3 =============================
+
+now we install a tool which helps to create a react app with all the basic setup we need including babel, webpack and all. 
+its like start spring.io
+
+sudo npm install create-react-app -g
+
+now, we run this command which sets up a project structure as per the version specified. 
+
+create-react-app first-react-project --scripts-version 1.1.5
+
+start the app
+
+npm start
+
+----
+
+install VS code
+described the folder structure and the use of all files. 
+
+----
+
+doing all the code - see in the project itself. 
+see some files also, in additional help material folder.
+
+events that we can handle in react - 
+https://reactjs.org/docs/events.html#supported-events
+
+
+============================ 
+
+
+stateful components vs stateless components --->
+stateful components are those which maintain the state of the component, 
+be it functiona or class based.
+stateful components are also called containers or smart components. 
+stateless components are also called presentational or dumb componnets. 
+
+its a best practice to make as many stateless components in ur app as we can and 
+minimize the number of stateful components. because it makes our app easy to manage 
+and maintain. 
+we have a clean structure that where is our logic and where is the data modified etc. 
+so, keep state only in selected few components. 
+
+============================
+
+
