@@ -1,18 +1,3 @@
-/* this file is globally available. 
-dont think that it will apply to only to the things in THIS package.
-actually webpack adds this to html file, so, its global. 
-*/
-
-/* 
-    css is just one way of styling, another one is javascript based and that is 
-    inline actually. in css, its global, it will apply to all the elements 
-    but we may not want that. so, to style a particular component, we 
-    need to use inline styling with JS. 
-    but in JS, we cant leverage the full power of CSS. like hover effect. 
-    we can find a middle way out but we will see that later. 
-
-*/
-
 .Person{
     width: 60%;
     margin: 16px auto;
