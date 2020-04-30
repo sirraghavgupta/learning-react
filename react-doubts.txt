@@ -25,3 +25,12 @@ x : function () {
      showname();
 }
 };
+
+
+click = {this.switchNameHandler.bind(this, 'gunjan')}
+--- working of this in this code, and bind also. 
+
+changed = {this.nameChangeHandler}/>
+--- doesnt work with arrow function returning. 
+node modules - 
+
