@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, {StyleRoot} from 'radium'
 import Person from './Person/Person';
-/**
- * here we import radium. its an extrenal package which helps us to make 
- * use of full css wiith inline javascript in our app. 
- */
-
 
 class App extends Component {
 
@@ -62,9 +56,6 @@ class App extends Component {
       border : '1px solid blue',
       padding : '8px',
       cursor : 'pointer',
-      /**
-       * now see that as its not a valid js property, so we use string key. 
-       */
       ':hover' : {
         backgroundColor : 'lightgreen'
       }
@@ -102,40 +93,25 @@ class App extends Component {
       classes.push("bold");
 
     return (
-      // whenever we use media queries, animations, we need to wrap the entire
-      // content in this component provided by Radium. 
-      <StyleRoot> 
-        <div className="App"> 
+    
+      <div className="App"> 
 
-          <p className = { classes.join(' ') } >
-            first react app
-          </p>
+        <p className = { classes.join(' ') } >
+          first react app
+        </p>
 
-          <button 
-            style = {style} 
-          onClick={this.togglePersonsHandler}>Toggle Components</button>
+        <button 
+          style = {style} 
+        onClick={this.togglePersonsHandler}>Toggle Components</button>
 
-          <p>I am another rendering</p>
+        <p>I am another rendering</p>
 
-          {persons}
+        {persons}
 
-        </div>
-      </StyleRoot> 
+      </div>
     );
 
   }
 }
-
-/**
- * its called a higher order component. 
- * basically its just a component wrappinf another component. 
- * its manipulates our original component and adds some additional 
- * functionlaity to that and that to manipulate oue pseudo selectors which 
- * we are using here. 
- * 
- * wrapping is always required whenever u use any feature of radium either the 
- * pseudo selector or animations, media queries and keyframes.
- * but StyleRoot is required only for animations, media queries and keyframes.  
- *
- */
-export default Radium(App);
+ 
+export default App;
