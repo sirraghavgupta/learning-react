@@ -25,7 +25,22 @@ import classes from './App.css';
         and this allows to make the unique random names for the css classes 
         so that they dont clash. 
 
- * 
+ *
+ It's not using magic for that, instead it'll simply automatically 
+ generate unique CSS class names for you. And by importing a JS object 
+ and assigning classes from there, you use these dynamically generated, 
+ unique names. So the imported JS object simply exposes some properties 
+ which hold the generated CSS class names as values.
+
+  By the way, if you somehow also want to define a global 
+  (i.e. un-transformed) CSS class in such a .css  file, you can prefix the 
+  selector with :global .
+
+  Example:
+  :global .Post { ... } 
+
+  Now you can use className="Post"  anywhere in your app and receive 
+  that styling. 
  */
 
 class App extends Component {
