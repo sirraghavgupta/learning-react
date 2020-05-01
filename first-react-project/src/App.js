@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+
+/**
+ * here we import radium. its an extrenal package which helps us to make 
+ * use of full css wiith inline javascript in our app. 
+ */
+import Radium from 'radium'
 import Person from './Person/Person';
 
 class App extends Component {
@@ -51,11 +57,17 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor : "cyan",
+      backgroundColor : "green",
       font : 'inherit',
       border : '1px solid blue',
       padding : '8px',
-      cursor : 'pointer'
+      cursor : 'pointer',
+      /**
+       * now see that as its not a valid js property, so we use string key. 
+       */
+      ':hover' : {
+        backgroundColor : 'lightgreen'
+      }
     }
 
     let persons = null;
@@ -77,6 +89,9 @@ class App extends Component {
       );
 
       style.backgroundColor = "red";
+      style[':hover'] = {
+        backgroundColor : 'salmon'
+      }
     }
 
     const classes = [];
@@ -107,4 +122,11 @@ class App extends Component {
   }
 }
 
-export default App;
+/**
+ * its called a higher order component. 
+ * basically its just a component wrappinf another component. 
+ * its manipulates our original component and adds some additional 
+ * functionlaity to that and that to manipulate oue pseudo selectors which 
+ * we are using here. 
+ */
+export default Radium(App);
