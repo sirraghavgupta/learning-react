@@ -77,7 +77,7 @@ class App extends Component {
 
     let persons = null;
 
-    let btnClass = [classes.button];
+    let btnClass = [];
 
     if(this.state.showPersons){
       persons = (
@@ -114,7 +114,7 @@ class App extends Component {
         </p>
 
         <button
-          className = {btnClass.join(' ')}
+          className = {btnClass }
           onClick={this.togglePersonsHandler}> Toggle Components
         </button>
 
