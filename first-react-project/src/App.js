@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import styled from 'styled-components';
 
-const StyledButton = styled.button`
-    background-color : ${ props => props.decideProp ? 'green' : 'red' };
-    font : inherit;
-    border : 1px solid blue;
-    padding : 8px;
-    cursor : pointer;
-
-    &:hover {
-      background-color : ${ props => props.decideProp ? 'lightgreen' : 'salmon' };
-      color : white;
-    }
-`;
 
 class App extends Component {
 
@@ -97,10 +84,10 @@ class App extends Component {
           first react app
         </p>
 
-        <StyledButton 
-          onClick={this.togglePersonsHandler}
-          decideProp = {this.state.showPersons} > Toggle Components
-        </StyledButton>
+        <button
+          className = "button" 
+          onClick={this.togglePersonsHandler}> Toggle Components
+        </button>
 
         <p>I am another rendering</p>
 
