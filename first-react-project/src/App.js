@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import Radium, {StyleRoot} from 'radium'
+import Person from './Person/Person';
 /**
  * here we import radium. its an extrenal package which helps us to make 
  * use of full css wiith inline javascript in our app. 
  */
-import Radium from 'radium'
-import Person from './Person/Person';
+
 
 class App extends Component {
 
@@ -101,22 +101,26 @@ class App extends Component {
     if(this.state.persons.length <=1)
       classes.push("bold");
 
-    return ( 
-      <div className="App"> 
+    return (
+      // whenever we use media queries, animations, we need to wrap the entire
+      // content in this component provided by Radium. 
+      <StyleRoot> 
+        <div className="App"> 
 
-        <p className = { classes.join(' ') } >
-          first react app
-        </p>
+          <p className = { classes.join(' ') } >
+            first react app
+          </p>
 
-        <button 
-          style = {style} 
-        onClick={this.togglePersonsHandler}>Toggle Components</button>
+          <button 
+            style = {style} 
+          onClick={this.togglePersonsHandler}>Toggle Components</button>
 
-        <p>I am another rendering</p>
+          <p>I am another rendering</p>
 
-        {persons}
+          {persons}
 
-      </div>
+        </div>
+      </StyleRoot> 
     );
 
   }
@@ -128,5 +132,10 @@ class App extends Component {
  * its manipulates our original component and adds some additional 
  * functionlaity to that and that to manipulate oue pseudo selectors which 
  * we are using here. 
+ * 
+ * wrapping is always required whenever u use any feature of radium either the 
+ * pseudo selector or animations, media queries and keyframes.
+ * but StyleRoot is required only for animations, media queries and keyframes.  
+ *
  */
 export default Radium(App);
