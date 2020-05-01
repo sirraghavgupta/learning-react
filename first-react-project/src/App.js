@@ -16,27 +16,6 @@ const StyledButton = styled.button`
     }
 `;
 
-/**
- * if we want to dynamically style these components, we can.
- * we need to add a property to the component on the basis of which we want to 
- * decide the styling. 
- * so, we added the showPersons property. 
- * 
- * now, we use the above syntx with $ sign and we can use the JS code there. 
- * after all, we know that its all JS. 
- * `` makes a string templete which is parsed into JS after all by the 
- * styled-components library. its his task. 
- * 
- * 
- * now, we see that with over we give the 
- * & sign - which tells that it has to apply the hover effect to this particular 
- * component. 
- * 
- * also, we observe that in the html, finally different classes are made 
- * acording to the property. and as the property value changes, we see 
- * the classes swapped up in the chrome dev tools. 
- */
-
 class App extends Component {
 
   state = {
