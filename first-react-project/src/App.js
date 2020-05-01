@@ -14,39 +14,23 @@ class App extends Component {
     showPersons : false
   }
 
-  // switchNameHandler = (newName)=>{
-  //   console.log("was clicked.");
-
-  //   this.setState({
-  //     persons : [
-  //       {name : newName, age:22},
-  //       {name : "mohit", age:24},
-  //       {name : "didu", age:277}
-  //     ]
-  //   });
-  // }
-
   deleteChangeHandler = (personIndex) => {
       console.log("delete request");
 
-      // const persons = this.state.persons.slice();
       const persons = [...this.state.persons];
       persons.splice(personIndex, 1);
       this.setState({persons : persons});
   }
 
 
-  // we add this handler now, we can update the componente more specifically now. 
   nameChangeHandler = (event, id)=>{
     console.log("was changed.");
 
-    // may also use the find() method to get the person directly.
     const personIndex = this.state.persons.findIndex( (person) => person.id === id);
     
     const person = { ...this.state.persons[personIndex] };
     person.name = event.target.value;
     
-    //  may also use Object.assign() for this.
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
@@ -112,23 +96,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-/**
- * why we need to add key attribute?
- * when we delete an element from the list, react needs to render the dom again. 
- * now, react works by creating a virtual dom in which it compares what is
- * alreadt rendered what is the new dom and then compares so that it can reload 
- * only the changed components. 
- * now, react need the key attribute to uniquely identify the elements. 
- * else, it just renders the whole list again which is very inefficient for 
- * long lists. 
- * so, we add the key attribute - it should be unique, else no benefit.
- * normally the DB primary key. 
- * if we add index of list here as the key, it really is not so beneficial 
- * as it keeps changing with the list. 
- * 
- * this is required only when we render lists in react by converting them to JSx
- * syntax. 
-
- */
