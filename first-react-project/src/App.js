@@ -35,16 +35,22 @@ class App extends Component {
       this.setState({persons : persons});
   }
 
-  nameChangeHandler = (event)=>{
+
+  // we add this handler now, we can update the componente more specifically now. 
+  nameChangeHandler = (event, id)=>{
     console.log("was changed.");
 
-    this.setState({
-      persons : [
-        {id : "1", name : event.target.value, age:22},
-        {id : "2", name : "mohit", age:24},
-        {id : "3", name : "didu", age:277}
-      ]
-    });
+    // may also use the find() method to get the person directly.
+    const personIndex = this.state.persons.findIndex( (person) => person.id === id);
+    
+    const person = { ...this.state.persons[personIndex] };
+    person.name = event.target.value;
+    
+    //  may also use Object.assign() for this.
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    this.setState( { persons : persons } );
   }
 
   togglePersonsHandler = ()=>{
@@ -80,6 +86,7 @@ class App extends Component {
                 age = {person.age} 
                 key = {person.id}
                 click = {() => this.deleteChangeHandler(index)}  
+                changed = { (event) => {this.nameChangeHandler(event, person.id)} }
               />)
            }
         </div>
