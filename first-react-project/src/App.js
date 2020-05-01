@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
-import './App.css';
 import Person from './Person/Person';
 
+/**
+ * this import will instruct it to import all the classes in the css file 
+ * as proeprties inside a map. so, classes is a map here with our class names
+ * as keys/ properties and the values will be the uniquely generated 
+ * class names. 
+ */
+import classes from './App.css';
+
+/**
+ * css modules is a nice way which allows to write the styling code right
+ * into the css file and that too with scope of a file or a component. 
+ * for using this with the script version 1, we need to do some configuration.
+ * while in 2-3 versions, its verty easy. 
+ * 
+ * we need to enable the module feature of css which is provided by webpack. 
+ * for editing in the config files, we need to eject the project first from
+ *  the auto cofig setup. it gives us all the config files and scripts also. 
+ * and now we can tweak them to enable the feature we want. 
+ * 
+ * modules: true, - this enables css modules
+   localIdentName: '[name]__[local]__[hash:base64:5]' 
+        and this allows to make the unique random names for the css classes 
+        so that they dont clash. 
+
+ * 
+ */
 
 class App extends Component {
 
@@ -52,6 +77,8 @@ class App extends Component {
 
     let persons = null;
 
+    let btnClass = [classes.button];
+
     if(this.state.showPersons){
       persons = (
         <div>
@@ -67,25 +94,27 @@ class App extends Component {
            }
         </div>
       );
+
+      btnClass.push(classes.Red);
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <=2 )
-      classes.push("red");
+      assignedClasses.push(classes.red);
     
     if(this.state.persons.length <=1)
-      classes.push("bold");
+      assignedClasses.push(classes.bold);
 
     return (
     
-      <div className="App"> 
+      <div className = {classes.App}> 
 
-        <p className = { classes.join(' ') } >
+        <p className = { assignedClasses.join(' ') } >
           first react app
         </p>
 
         <button
-          className = "button" 
+          className = {btnClass.join(' ')}
           onClick={this.togglePersonsHandler}> Toggle Components
         </button>
 

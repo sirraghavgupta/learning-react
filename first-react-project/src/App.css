@@ -12,6 +12,7 @@
 
 .button{
   background-color : green;
+  color : white;
   font : inherit;
   border : 1px solid blue;
   padding : 8px;
@@ -21,5 +22,13 @@
 
 .button:hover {
   background-color : lightgreen;
-  color : white;
+  color : black;
+}
+
+.button.Red{
+  background-color: red;
+}
+
+.button.Red:hover{
+  background-color: salmon;
 }
