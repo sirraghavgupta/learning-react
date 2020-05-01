@@ -6,9 +6,9 @@ class App extends Component {
 
   state = {
     persons:[
-      {name : "raghav", age:22},
-      {name : "mohit", age:24},
-      {name : "didu", age:26}
+      {id : "1", name : "raghav", age:22},
+      {id : "2", name : "mohit", age:24},
+      {id : "3", name : "didu", age:26}
     ],
     otherProp : 'another prop is untouched',
     showPersons : false
@@ -40,9 +40,9 @@ class App extends Component {
 
     this.setState({
       persons : [
-        {name : event.target.value, age:22},
-        {name : "mohit", age:24},
-        {name : "didu", age:277}
+        {id : "1", name : event.target.value, age:22},
+        {id : "2", name : "mohit", age:24},
+        {id : "3", name : "didu", age:277}
       ]
     });
   }
@@ -78,6 +78,7 @@ class App extends Component {
               <Person 
                 name = {person.name} 
                 age = {person.age} 
+                key = {person.id}
                 click = {() => this.deleteChangeHandler(index)}  
               />)
            }
@@ -104,3 +105,23 @@ class App extends Component {
 }
 
 export default App;
+
+
+/**
+ * why we need to add key attribute?
+ * when we delete an element from the list, react needs to render the dom again. 
+ * now, react works by creating a virtual dom in which it compares what is
+ * alreadt rendered what is the new dom and then compares so that it can reload 
+ * only the changed components. 
+ * now, react need the key attribute to uniquely identify the elements. 
+ * else, it just renders the whole list again which is very inefficient for 
+ * long lists. 
+ * so, we add the key attribute - it should be unique, else no benefit.
+ * normally the DB primary key. 
+ * if we add index of list here as the key, it really is not so beneficial 
+ * as it keeps changing with the list. 
+ * 
+ * this is required only when we render lists in react by converting them to JSx
+ * syntax. 
+
+ */
