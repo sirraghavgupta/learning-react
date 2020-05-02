@@ -1,0 +1,24 @@
+.Fruit{
+    color: green;
+}
+
+td{
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+button{
+    display : block;
+    margin: 10px auto;
+    width: 100px;
+    height: 30px;
+    background-color: blue;
+    color: white;
+    border-radius: 6px;
+    outline: none;
+}
+input{
+    width: 50%;
+    height: 30px;
+    border-radius: 6px;
+}
