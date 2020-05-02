@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 
 /**
  * this import will instruct it to import all the classes in the css file 
