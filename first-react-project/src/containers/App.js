@@ -1,47 +1,7 @@
 import React, { Component } from 'react';
 import Person from '../components/Persons/Person/Person';
-
-/**
- * this import will instruct it to import all the classes in the css file 
- * as proeprties inside a map. so, classes is a map here with our class names
- * as keys/ properties and the values will be the uniquely generated 
- * class names. 
- */
 import classes from './App.css';
 
-/**
- * css modules is a nice way which allows to write the styling code right
- * into the css file and that too with scope of a file or a component. 
- * for using this with the script version 1, we need to do some configuration.
- * while in 2-3 versions, its verty easy. 
- * 
- * we need to enable the module feature of css which is provided by webpack. 
- * for editing in the config files, we need to eject the project first from
- *  the auto cofig setup. it gives us all the config files and scripts also. 
- * and now we can tweak them to enable the feature we want. 
- * 
- * modules: true, - this enables css modules
-   localIdentName: '[name]__[local]__[hash:base64:5]' 
-        and this allows to make the unique random names for the css classes 
-        so that they dont clash. 
-
- *
- It's not using magic for that, instead it'll simply automatically 
- generate unique CSS class names for you. And by importing a JS object 
- and assigning classes from there, you use these dynamically generated, 
- unique names. So the imported JS object simply exposes some properties 
- which hold the generated CSS class names as values.
-
-  By the way, if you somehow also want to define a global 
-  (i.e. un-transformed) CSS class in such a .css  file, you can prefix the 
-  selector with :global .
-
-  Example:
-  :global .Post { ... } 
-
-  Now you can use className="Post"  anywhere in your app and receive 
-  that styling. 
- */
 
 class App extends Component {
 
