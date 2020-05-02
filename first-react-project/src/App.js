@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
-
+import ErrorBoundaries from './ErrorBoundaries/ErrorBoundaries'
 /**
  * this import will instruct it to import all the classes in the css file 
  * as proeprties inside a map. so, classes is a map here with our class names
@@ -99,13 +99,23 @@ class App extends Component {
         <div>
            {
              this.state.persons.map( (person, index) => 
+
+             /**
+              * Now with that person wrapped with error boundary, we also have to move the 
+              * key here to the error boundary because this is now the outer element which we 
+              * map and the key always has to be on the outer element. 
+              */
+
+             <ErrorBoundaries key = {person.id} >
+
               <Person 
                 name = {person.name} 
                 age = {person.age} 
-                key = {person.id}
                 click = {() => this.deleteChangeHandler(index)}  
                 changed = { (event) => {this.nameChangeHandler(event, person.id)} }
-              />)
+              />
+              
+              </ErrorBoundaries>)
            }
         </div>
       );
