@@ -26,7 +26,7 @@ class App extends Component {
       {id : "3", name : "didu", age:26}
     ],
     otherProp : 'another prop is untouched',
-    showPersons : true
+    showPersons : false
   }
 
 
