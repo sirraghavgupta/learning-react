@@ -32,17 +32,17 @@ const Cockpit = (props) => {
     //     }
     // }, [props.persons] );
 
-    // useEffect( ()=>{
-    //   console.log("[Cockpit.js] useEffect() 2 called");
-    //   // .. HTTP request
-    //   setTimeout(()=>{
-    //     console.log("saved data to cloud - 2");
-    //   }, 1000);
+    useEffect( ()=>{
+      console.log("[Cockpit.js] useEffect() 2 called");
+      // .. HTTP request
+      setTimeout(()=>{
+        console.log("saved data to cloud - 2");
+      }, 1000);
 
-    //   return ()=>{
-    //     console.log("cleaning up for useEffect 2");
-    //   }
-    // });
+      return ()=>{
+        console.log("cleaning up for useEffect 2");
+      }
+    });
 
     useEffect( ()=>{
       console.log("[Cockpit.js] useEffect() 3 called");

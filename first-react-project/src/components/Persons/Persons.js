@@ -27,7 +27,11 @@ class Persons extends Component{
      * can be used for performance optimization. 
      */
     console.log( '[Persons.js] shouldComponentUpdate() called');
-    return true;
+
+    if(nextProps.persons !== this.props.persons)
+      return true;
+    else
+      return false;
   }
 
 
