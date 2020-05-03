@@ -3,13 +3,6 @@ import classes from './Person.css';
 
 class Person extends Component{
 
-    // - should not use here as we dont have any state. 
-    // static getDerivedStateFromProps(props, state) {
-    //     console.log( '[Person.js] getDerivedStateFromProps() called', props);
-    //     return state;
-    // }
-
-
     shouldComponentUpdate(nextProps, nextState){
         console.log( '[Person.js] shouldComponentUpdate() called');
         return true;
@@ -23,13 +16,11 @@ class Person extends Component{
     
 
     componentDidUpdate(prevProps, prevState, snapshot){
-    // here we may create the side effects here only.
     console.log( '[Person.js] componentDidUpdate() called', snapshot);
     }     
 
 
     componentDidMount(){
-        // here we may create the side effects here only. 
         console.log( '[Person.js ] componentDidMount() called' );
     }
     
