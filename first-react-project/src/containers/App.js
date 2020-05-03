@@ -22,7 +22,8 @@ class App extends Component {
     ],
     otherProp : 'another prop is untouched',
     showPersons : false,
-    showCockpit : true
+    showCockpit : true,
+    changeCounter : 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -55,7 +56,27 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState( { persons : persons } );
+    /**
+     * here, this code works fine but its not the correct way because
+     * whenever we setState(), react doesnt do that imediately.
+     * it actually schedules that call. so, thought we are calling it 
+     * synchronously, it may execute asynchronously when it gets resources. 
+     * althought it happens imediately but is not guaranteed. 
+     * so, when it will execute it may not get the correct state which 
+     * we are referring to at the time when we set it. 
+     */
+    // this.setState( { persons : persons,
+                    //  changeCounter : this.state.changeCounter + 1} );
+
+    /**
+     * so, we use this optional method, which is very important here. 
+     * it takes the prevous state and the props as they may be required also. 
+     */
+    this.setState( ( prevState, props ) => {
+        return { 
+          persons : persons,
+          changeCounter : this.state.changeCounter + 1}
+      } );
   }
 
   togglePersonsHandler = ()=>{
