@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 // import classes from './Person.css';
+import Aux from '../../../hoc/Aux.js';
 
 class Person extends Component{
 
@@ -28,17 +29,23 @@ class Person extends Component{
     render(){
         console.log( '[Person.js] rendering' );
         
-        return [
-        // <div className = { classes.Person } >
+        return (
+        // styling class doesn't work here. 
 
-            <p onClick = { this.props.clicked }> I am { this.props.name }. i am { this.props.age }.</p>, 
+        /**
+         * the array method is fine but if we dont like that, we may also 
+         * create an auxiliary element. 
+         */
+        <Aux>
 
-            <p> { this.props.children } </p>,
+            <p onClick = { this.props.clicked }> I am { this.props.name }. i am { this.props.age }.</p> 
+
+            <p> { this.props.children } </p>
             
             <input type = "text" value = { this.props.name } onChange = { this.props.changed }/>
         
-        // </div>
-        ];
+        </Aux>
+     );
     }
 
 }
