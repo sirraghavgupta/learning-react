@@ -26,7 +26,8 @@ class App extends Component {
       {id : "3", name : "didu", age:26}
     ],
     otherProp : 'another prop is untouched',
-    showPersons : false
+    showPersons : false,
+    showCockpit : true
   }
 
 
@@ -123,12 +124,22 @@ virtual dom and then renders what it requires to render again. awesome --
     
       <div className = {classes.App}> 
 
-        <Cockpit
-          clicked = { this.togglePersonsHandler }
-          showPersons = { this.state.showPersons }
-          persons = { this.state.persons }
-          title = { this.props.appTitle }
-        />
+        <button 
+          onClick = { ()=>{
+            this.setState({ showCockpit : !this.state.showCockpit });
+          } }
+        > Toggle Cockpit</button>
+
+        {
+          this.state.showCockpit ? 
+            <Cockpit
+            clicked = { this.togglePersonsHandler }
+            showPersons = { this.state.showPersons }
+            persons = { this.state.persons }
+            title = { this.props.appTitle }
+            />  : null
+        }
+        
 
         {persons}
 

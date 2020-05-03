@@ -12,20 +12,52 @@ const Cockpit = (props) => {
     * 
     * if we want to configure it to run only in update cycles, we need to 
     * provide an array of those data items to which it is sensitive. then it will 
-    * run accordingly on updates. but will on creation too. 
+    * run accordingly on updates. 
     * 
     * and if we want it to run only in creation cycle, then we pass an empty 
     * array, so that nothing changes and it doesnt run again. 
     * 
     * we can add multiple useEffects() for diff data items also. 
    */
+
+    // useEffect( ()=>{
+    //     console.log("[Cockpit.js] useEffect() 1 called");
+    //     // .. HTTP request
+    //     setTimeout(()=>{
+    //       console.log("saved data to cloud - 1");
+    //     }, 1000);
+
+    //     return ()=>{
+    //       console.log("cleaning up for useEffect 1");
+    //     }
+    // }, [props.persons] );
+
+    // useEffect( ()=>{
+    //   console.log("[Cockpit.js] useEffect() 2 called");
+    //   // .. HTTP request
+    //   setTimeout(()=>{
+    //     console.log("saved data to cloud - 2");
+    //   }, 1000);
+
+    //   return ()=>{
+    //     console.log("cleaning up for useEffect 2");
+    //   }
+    // });
+
     useEffect( ()=>{
-        console.log("[Cockpit.js] useEffect() called");
-        // .. HTTP request
-        setTimeout(()=>{
-          alert("saved data to cloud");
-        }, 1000);
-    }, [props.showPersons] );
+      console.log("[Cockpit.js] useEffect() 3 called");
+      // .. HTTP request
+
+      setTimeout(()=>{
+        console.log("saved data to cloud - 3");
+      }, 1000);
+
+      return ()=>{
+        // clearTimeout(timer);
+        console.log("cleaning up for useEffect 3");
+      }
+    }, []);
+
 
     const assignedClasses = [];
     if(props.persons.length <=2 )

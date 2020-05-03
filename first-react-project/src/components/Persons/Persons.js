@@ -23,6 +23,8 @@ class Persons extends Component{
      * we diecide that whether the dom should be rerendered or not. 
      * so, we may stop the update cycle here. 
      * but if done improperly, in between, it may break the dom. 
+     * 
+     * can be used for performance optimization. 
      */
     console.log( '[Persons.js] shouldComponentUpdate() called');
     return true;
@@ -53,6 +55,10 @@ class Persons extends Component{
 
   // }
 
+
+  componentWillUnmount(){
+    console.log( '[Persons.js]  componentWillUnmount() called' );
+  }
 
   componentDidMount(){
     // here we may create the side effects here only.
