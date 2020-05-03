@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component{
+class Persons extends PureComponent{
   
 
   // - should not use here as we dont have any state. 
@@ -17,22 +17,26 @@ class Persons extends Component{
   // }
 
 
-  shouldComponentUpdate(nextProps, nextState){
-    /**
-     * this method recieves the new props and new updated state. 
-     * we diecide that whether the dom should be rerendered or not. 
-     * so, we may stop the update cycle here. 
-     * but if done improperly, in between, it may break the dom. 
-     * 
-     * can be used for performance optimization. 
-     */
-    console.log( '[Persons.js] shouldComponentUpdate() called');
+  // -- rather use pure componet. 
+  // 
+  // shouldComponentUpdate(nextProps, nextState){
+  //   /**
+  //    * this method recieves the new props and new updated state. 
+  //    * we diecide that whether the dom should be rerendered or not. 
+  //    * so, we may stop the update cycle here. 
+  //    * but if done improperly, in between, it may break the dom. 
+  //    * 
+  //    * can be used for performance optimization. 
+  //    */
+  //   console.log( '[Persons.js] shouldComponentUpdate() called');
 
-    if(nextProps.persons !== this.props.persons)
-      return true;
-    else
-      return false;
-  }
+  //   if(nextProps.persons !== this.props.persons || 
+  //      nextProps.clicked !== this.props.clicked ||
+  //      nextProps.changed !== this.props.changed)
+  //     return true;
+  //   else
+  //     return false;
+  // }
 
 
   getSnapshotBeforeUpdate(prevProps, prevState){
