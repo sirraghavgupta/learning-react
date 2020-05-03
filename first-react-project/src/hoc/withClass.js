@@ -9,10 +9,13 @@ import React from 'react';
  * name WrappedComponent with caps only - so that it can be treated as a component.
  */
  
-const withClass = (WrappedComponent, className)=>{
+const withClass = (WrappedComponent, className) => {
     return props => (
         <div className = { className } >
-            <WrappedComponent/>
+            {/* here, we need to pass the props with the person component because
+            after all when we render Person, we need to access the props. 
+            else, we dont have the data on the dom. we saw. */}
+            <WrappedComponent { ...props }/>
         </div>
     );
 }

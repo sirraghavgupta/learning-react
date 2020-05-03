@@ -40,6 +40,12 @@ class Persons extends PureComponent{
   
   console.log( '[Persons.js] rendering' );
   return this.props.persons.map( (person, index) => 
+      /**
+       * what we are using here as person refers to the functional component 
+       * returned by the withClass call. so, what ever props we pass in here
+       * go inside the functional comp which is in the withClass method. 
+       * so, we are able to directly access the props there. 
+       */
               <Person 
                 name = {person.name} 
                 age = {person.age} 
