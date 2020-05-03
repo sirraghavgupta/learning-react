@@ -18,6 +18,7 @@ class App extends Component {
    * we do not do it by this.setState() method as there is no initial state to 
    * merge that. 
    */
+
   state = {
     persons:[
       {id : "1", name : "raghav", age:22},
@@ -25,8 +26,9 @@ class App extends Component {
       {id : "3", name : "didu", age:26}
     ],
     otherProp : 'another prop is untouched',
-    showPersons : false
+    showPersons : true
   }
+
 
   /**
    * its used when u want to set the internal state of the comp on the basis 
@@ -41,16 +43,21 @@ class App extends Component {
     return state;
   }
 
+
   // this is an older hook, still available, may be removed in future. 
   // similar to getDerivedStateFromProps() but we dont use either normally.
+  //
   // componentWillMount(){
   //   console.log( '[App.js ] componentWillMount() called' );
   // }
 
+
   componentDidMount(){
+    // here only we can make all the side effects. 
     console.log( '[App.js ] componentDidMount() called' );
   }
 
+  
   deleteChangeHandler = (personIndex) => {
       console.log("delete request");
 
@@ -127,7 +134,6 @@ virtual dom and then renders what it requires to render again. awesome --
 
       </div>
     );
-
   }
 }
  
