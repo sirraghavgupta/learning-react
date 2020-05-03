@@ -135,7 +135,7 @@ virtual dom and then renders what it requires to render again. awesome --
             <Cockpit
             clicked = { this.togglePersonsHandler }
             showPersons = { this.state.showPersons }
-            persons = { this.state.persons }
+            personsLength = { this.state.persons.length }
             title = { this.props.appTitle }
             />  : null
         }
