@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
-// import classes from './Person.css';
+import WithClasses from '../../../hoc/WithClasses';
+import classes from './Person.css';
 // import Aux from '../../../hoc/Aux.js';
 
 class Person extends Component{
@@ -36,7 +37,7 @@ class Person extends Component{
          * the array method is fine but if we dont like that, we may also 
          * create an auxiliary element. 
          */
-        <Fragment>
+        <WithClasses classes = { classes.Person } >
 
             <p onClick = { this.props.clicked }> I am { this.props.name }. i am { this.props.age }.</p> 
 
@@ -44,7 +45,7 @@ class Person extends Component{
             
             <input type = "text" value = { this.props.name } onChange = { this.props.changed }/>
         
-        </Fragment>
+        </WithClasses>
      );
     }
 
