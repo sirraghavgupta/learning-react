@@ -70,7 +70,9 @@ class App extends Component {
 
     /**
      * so, we use this optional method, which is very important here. 
-     * it takes the prevous state and the props as they may be required also. 
+     * it takes the prevous state and the props as they may be required also.
+     * 
+     * its used when our new state depends on the earlier state.  
      */
     this.setState( ( prevState, props ) => {
         return { 
