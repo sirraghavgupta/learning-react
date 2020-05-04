@@ -1,7 +1,8 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import withClass from '../../../hoc/withClass';
 import classes from './Person.css';
-import Aux from '../../../hoc/Aux.js';
+import Aux from '../../../hoc/Aux.js'; 
+import PropTypes from 'prop-types';
 
 class Person extends Component{
 
@@ -50,6 +51,13 @@ class Person extends Component{
     }
 
 }
+
+Person.propTypes = {
+    click : PropTypes.func,
+    changed : PropTypes.func,
+    name : PropTypes.string,
+    age : PropTypes.number
+};
 
 // what we are exporting is the result of the withClass call. 
 export default withClass(Person, classes.Person);
