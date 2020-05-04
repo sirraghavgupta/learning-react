@@ -1,7 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css'
 
 const Cockpit = (props) => {
+
+    /**
+     * now see, the arrow function wali approach will not work here. 
+     * but the constructor wali approach can. 
+     * but React.createRef() doesnt work here. 
+     * so, we use useRef() hook and we then click the button in the useEffect()
+     * method. 
+     * here we are doung that the toggle button will be auto clicked on 
+     * reloading the page. 
+     */
+    
+    const toggleButtonRef = useRef(null);
 
     useEffect( ()=>{
       console.log("[Cockpit.js] useEffect() 2 called");
@@ -19,9 +31,11 @@ const Cockpit = (props) => {
       console.log("[Cockpit.js] useEffect() 3 called");
       // .. HTTP request
 
-      setTimeout(()=>{
-        console.log("saved data to cloud - 3");
-      }, 1000);
+      // setTimeout(()=>{
+      //   console.log("saved data to cloud - 3");
+      // }, 1000);
+
+      toggleButtonRef.current.click();
 
       return ()=>{
         // clearTimeout(timer);
@@ -51,6 +65,7 @@ const Cockpit = (props) => {
             </p>
 
             <button
+              ref = {toggleButtonRef}
               className = { btnClass }
               onClick = { props.clicked } > Toggle Components
             </button>
