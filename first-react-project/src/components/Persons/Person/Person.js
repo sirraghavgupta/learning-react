@@ -40,7 +40,6 @@ class Person extends Component{
 
         // method 2 - newer react
         this.inputElementRef.current.focus();
-
     }
     
 
@@ -96,5 +95,4 @@ Person.propTypes = {
     age : PropTypes.number
 };
 
-// what we are exporting is the result of the withClass call. 
 export default withClass(Person, classes.Person);
