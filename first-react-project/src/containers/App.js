@@ -4,6 +4,7 @@ import classes from "./App.css";
 import Cockpit from "../components/Cockpit/Cockpit";
 import withClass from "../hoc/withClass";
 import Aux from "../hoc/Aux";
+import AuthContext from "../Context/auth-context";
 
 class App extends Component {
   constructor(props) {
@@ -87,7 +88,6 @@ class App extends Component {
           clicked={this.deleteChangeHandler}
           changed={this.nameChangeHandler}
           persons={this.state.persons}
-          isAuth={this.state.isAuthenticated}
         />
       );
     }
@@ -105,17 +105,38 @@ class App extends Component {
           Toggle Cockpit
         </button>
 
-        {this.state.showCockpit ? (
-          <Cockpit
-            clicked={this.togglePersonsHandler}
-            showPersons={this.state.showPersons}
-            personsLength={this.state.persons.length}
-            title={this.props.appTitle}
-            login={this.loginHandler}
-          />
-        ) : null}
+        {/**
+         * now, here below we are using the auth context because ww want to pass the
+         * props to the grand child components by escapiing the components in between.
+         *
+         * so, wrap the area where we want to use the authContext with this
+         * provider. it will make the auth context available there.
+         *
+         * we need to set the value of the auth context dynamically with the state.
+         * so, we pass that. else we can use the default value.
+         *
+         * here, using state will ensure that the components are rendered. when
+         * the components will re reder this value object will be also updated as its
+         * a prop and it will inform the consumers also.
+         */}
 
-        {persons}
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.isAuthenticated,
+            login: this.loginHandler,
+          }}
+        >
+          {this.state.showCockpit ? (
+            <Cockpit
+              clicked={this.togglePersonsHandler}
+              showPersons={this.state.showPersons}
+              personsLength={this.state.persons.length}
+              title={this.props.appTitle}
+            />
+          ) : null}
+
+          {persons}
+        </AuthContext.Provider>
       </Aux>
       // </WithClasses>
       // </div>

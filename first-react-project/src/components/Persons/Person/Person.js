@@ -3,6 +3,7 @@ import withClass from "../../../hoc/withClass";
 import classes from "./Person.css";
 import Aux from "../../../hoc/Aux.js";
 import PropTypes from "prop-types";
+import AuthContext from "../../../Context/auth-context";
 
 class Person extends Component {
   constructor(props) {
@@ -48,12 +49,22 @@ class Person extends Component {
        * the array method is fine but if we dont like that, we may also
        * create an auxiliary element.
        */
+
+      /**
+       * here we wrap the area where we want to access the value of auth context.
+       * and the syntax is that we need to give an arrow fuunction with context as
+       * param and we can acces the value inside the body now.
+       */
       <Aux>
-        {this.props.isAuthenticated ? (
-          <p>Authenticated</p>
-        ) : (
-          <p>Please sign in.</p>
-        )}
+        <AuthContext.Consumer>
+          {(context) =>
+            context.authenticated ? (
+              <p>Authenticated.</p>
+            ) : (
+              <p>Please sign in.</p>
+            )
+          }
+        </AuthContext.Consumer>
 
         <p onClick={this.props.clicked}>
           I am {this.props.name}. i am {this.props.age}.
