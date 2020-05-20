@@ -12,6 +12,15 @@ class Person extends Component {
     this.inputElementRef = React.createRef();
   }
 
+  /**
+   * should always be static and the same name. it will expose the context
+   * object for us and we can use that with this keyword to access the data
+   * of the authContext.
+   *
+   * works in class component only.
+   */
+  static contextType = AuthContext;
+
   shouldComponentUpdate(nextProps, nextState) {
     console.log("[Person.js] shouldComponentUpdate() called");
     return true;
@@ -28,7 +37,7 @@ class Person extends Component {
 
   componentDidMount() {
     console.log("[Person.js ] componentDidMount() called");
-
+    console.log(this.context);
     // this is one normal JS method without ref. not so good.
     // document.getElementsByTagName('input')[2].focus();
 
@@ -56,22 +65,15 @@ class Person extends Component {
        * param and we can acces the value inside the body now.
        */
       <Aux>
-        <AuthContext.Consumer>
-          {(context) =>
-            context.authenticated ? (
-              <p>Authenticated.</p>
-            ) : (
-              <p>Please sign in.</p>
-            )
-          }
-        </AuthContext.Consumer>
-
+        {this.context.authenticated ? (
+          <p>Authenticated.</p>
+        ) : (
+          <p>Please sign in.</p>
+        )}
         <p onClick={this.props.clicked}>
           I am {this.props.name}. i am {this.props.age}.
         </p>
-
         <p> {this.props.children} </p>
-
         <input
           type="text"
           value={this.props.name}

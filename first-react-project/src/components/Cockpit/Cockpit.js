@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import classes from "./Cockpit.css";
 import AuthContext from "../../Context/auth-context";
 
@@ -43,6 +43,13 @@ const Cockpit = (props) => {
     };
   }, []);
 
+  /**
+   * for functional components, we have this hook.
+   * we can give any name. we have this approach here because we cant access
+   * properties here as we do in class components.
+   */
+  const authContext = useContext(AuthContext);
+
   const assignedClasses = [];
   if (props.personsLength <= 2) assignedClasses.push(classes.red);
 
@@ -64,9 +71,8 @@ const Cockpit = (props) => {
       >
         Toggle Components
       </button>
-      <AuthContext.Consumer>
-        {(context) => <button onClick={context.login}>Login</button>}
-      </AuthContext.Consumer>
+
+      <button onClick={authContext.login}>Login</button>
 
       <p>I am another rendering</p>
     </div>
